@@ -1,7 +1,6 @@
-package gaugenie.reference;
+package gaugenie.reference.repository;
 
 import gaugenie.reference.entity.Tag;
-import gaugenie.reference.repository.TagRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -13,12 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
- class TagRepositoryTests {
-    @Autowired
-    private TagRepository tagRepository;
+class TagRepositoryTest {
+    @Autowired private TagRepository tagRepository;
 
     @Test
-     void testCreateTag() {
+    void testCreateTag() {
         Tag tag = new Tag();
         tag.setName("Spring");
 
@@ -28,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
     @Test
-     void testReadTagByName() {
+    void testReadTagByName() {
         String tagName = "Spring"; // remplacez par le nom d'un tag existant
         Tag tag = tagRepository.findByName(tagName);
 
@@ -37,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.*;
     }
 
     @Test
-     void testUpdateTag() {
+    void testUpdateTag() {
         String tagName = "Spring"; // remplacez par le nom d'un tag existant
         Tag tag = tagRepository.findByName(tagName);
 
@@ -62,3 +60,4 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 }
+
