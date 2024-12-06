@@ -19,8 +19,8 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "tags")
-@JsonIgnoreProperties("articles")
+@Table(name = "tag_tbl")
+@JsonIgnoreProperties("reference")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Tag {
 
@@ -31,5 +31,5 @@ public class Tag {
 
     @ManyToMany(mappedBy = "tags")
     @JsonIgnore
-    private Set<Article> articles = new HashSet<>();
+    private Set<Reference> references = new HashSet<>();
 }
