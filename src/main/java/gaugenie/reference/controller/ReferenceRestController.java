@@ -61,4 +61,8 @@ public class ReferenceRestController {
         }
         return ResponseEntity.notFound().build();
     }
+    @GetMapping("/tags/{tagId}")
+    public List<Reference> getReferencesByTag(@PathVariable Integer tagId) {
+        return referenceServiceImpl.getReferencesByTag(tagId);
+    }
 }

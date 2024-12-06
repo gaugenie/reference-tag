@@ -11,4 +11,6 @@ public interface ReferenceService {
     Reference updateReference(Integer id, Reference reference);
     void deleteReference(Integer id);
     void addTagToReference(Integer referenceId, Integer tagId);
+
+    List<Reference> getReferencesByTag(Integer tagId);
 }

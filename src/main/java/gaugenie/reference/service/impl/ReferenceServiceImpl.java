@@ -7,6 +7,7 @@ import gaugenie.reference.service.ReferenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -64,5 +65,16 @@ public class ReferenceServiceImpl implements ReferenceService {
             throw new RuntimeException("Reference not found");
         }
 
+    }
+
+    @Override
+    public List<Reference> getReferencesByTag(Integer tagId) {
+        List<Reference> references = new ArrayList<Reference>();
+        for (Reference reference : referenceRepository.findAll()) {
+            if (reference.getTags().contains(tagRepository.findById(tagId).orElse(null))) {
+                references.add(reference);
+            }
+        }
+        return references;
     }
 }
