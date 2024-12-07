@@ -18,7 +18,7 @@ class TagRepositoryTest {
     @Test
     void testCreateTag() {
         Tag tag = new Tag();
-        tag.setName("Spring");
+        tag.setName("Java Script");
 
         Tag savedTag = tagRepository.save(tag);
         assertNotNull(savedTag);
@@ -35,15 +35,16 @@ class TagRepositoryTest {
     }
 
     @Test
-    void testUpdateTag() {
-        String tagName = "Spring"; // remplacez par le nom d'un tag existant
-        Tag tag = tagRepository.findByName(tagName);
+    void testUpdateTag(Tag tag) {
+        // find id to existing tag
+        Integer tagId = 1;
+        Tag existingTag = tagRepository.findById(tagId).orElse(null);
+        if (existingTag!= null) {
+            existingTag.setName("Angular");
+        }
+        Tag updatedTag = tagRepository.save(existingTag);
+        assertEquals("Angular", updatedTag.getName());
 
-        assertNotNull(tag);
-        tag.setName("Spring Framework");
-
-        Tag updatedTag = tagRepository.save(tag);
-        assertEquals("Spring Framework", updatedTag.getName());
     }
 
     @Test
